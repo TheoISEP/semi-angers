@@ -62,7 +62,7 @@ export default function Parcours() {
           className="mb-8 md:mb-16 rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-white"
         >
           <Image
-            src="/gpx.png"
+            src="/vraigpx.png"
             alt="Tracé GPS du parcours du Semi d'Angers"
             width={1920}
             height={1080}
