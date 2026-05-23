@@ -14,7 +14,7 @@ export default function Footer() {
           {/* Logo and Description */}
           <div>
             <Image
-              src="/images/logo-gray.png"
+              src="/images/logo-gray.png?v=2"
               alt="Semi-marathon d'Angers"
               width={180}
               height={180}

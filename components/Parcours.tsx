@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 const distances = [
   {
@@ -58,12 +59,15 @@ export default function Parcours() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8 md:mb-16 rounded-xl md:rounded-2xl overflow-hidden shadow-2xl"
+          className="mb-8 md:mb-16 rounded-xl md:rounded-2xl overflow-hidden shadow-2xl bg-white"
         >
-          <img
+          <Image
             src="/gpx.png"
             alt="Tracé GPS du parcours du Semi d'Angers"
+            width={1920}
+            height={1080}
             className="w-full h-auto"
+            priority
           />
         </motion.div>
 

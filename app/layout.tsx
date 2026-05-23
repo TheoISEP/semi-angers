@@ -45,10 +45,11 @@ export const metadata: Metadata = {
   category: "sports",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/images/logo.png", sizes: "any" },
+      { url: "/favicon.png", sizes: "any" },
+      { url: "/images/logo.png", sizes: "512x512" },
     ],
     apple: "/images/logo.png",
+    shortcut: "/favicon.png",
   },
   openGraph: {
     title: "Semi-marathon d'Angers 2027",

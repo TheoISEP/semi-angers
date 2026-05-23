@@ -34,8 +34,8 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <Image
-                src={scrolled ? "/images/logo.png" : "/images/logo-gray.png"}
-                alt="Le Semi des Quais de Seine"
+                src={scrolled ? "/images/logo.png?v=2" : "/images/logo-gray.png?v=2"}
+                alt="Semi d'Angers"
                 width={60}
                 height={60}
                 className="transition-all duration-300 md:w-[75px] md:h-[75px]"

@@ -15,14 +15,14 @@ L.Icon.Default.mergeOptions({
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
 
-// Custom icons with beautiful gradients
+// Custom icons with beautiful gradients - Angers colors
 const startIcon = new L.Icon({
   iconUrl: "data:image/svg+xml," + encodeURIComponent(`
     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
       <defs>
         <linearGradient id="startGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+          <stop offset="0%" style="stop-color:#27AE60;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#1E8449;stop-opacity:1" />
         </linearGradient>
       </defs>
       <circle cx="20" cy="20" r="18" fill="url(#startGradient)" stroke="white" stroke-width="3"/>
@@ -39,8 +39,8 @@ const finishIcon = new L.Icon({
     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
       <defs>
         <linearGradient id="finishGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#DC2626;stop-opacity:1" />
+          <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#B8855A;stop-opacity:1" />
         </linearGradient>
       </defs>
       <circle cx="20" cy="20" r="18" fill="url(#finishGradient)" stroke="white" stroke-width="3"/>
@@ -115,17 +115,17 @@ export default function MapComponent() {
 
   return (
     <div className="space-y-3 md:space-y-4">
-      {/* Stats Cards */}
+      {/* Stats Cards - Angers colors */}
       <div className="grid grid-cols-3 gap-2 md:gap-4">
-        <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg">
+        <div className="bg-gradient-to-br from-navy-dark to-navy-medium text-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg">
           <div className="text-xs md:text-sm opacity-90">Distance</div>
           <div className="text-xl md:text-3xl font-bold">21.1 km</div>
         </div>
-        <div className="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg">
+        <div className="bg-gradient-to-br from-seine-blue to-seine-dark text-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg">
           <div className="text-xs md:text-sm opacity-90">Dénivelé +</div>
           <div className="text-xl md:text-3xl font-bold">+{gpxData.elevationGain.toFixed(0)} m</div>
         </div>
-        <div className="bg-gradient-to-br from-red-500 to-red-600 text-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg">
+        <div className="bg-gradient-to-br from-gold to-gold-dark text-white rounded-lg md:rounded-xl p-3 md:p-4 shadow-lg">
           <div className="text-xs md:text-sm opacity-90">Dénivelé -</div>
           <div className="text-xl md:text-3xl font-bold">-{gpxData.elevationLoss.toFixed(0)} m</div>
         </div>
@@ -146,11 +146,11 @@ export default function MapComponent() {
 
           <FitBounds bounds={gpxData.bounds} />
 
-          {/* Main path with gradient effect */}
+          {/* Main path with gradient effect - Angers color */}
           <Polyline
             positions={pathCoordinates}
             pathOptions={{
-              color: "#0A2540",
+              color: "#2C3E50",
               weight: 5,
               opacity: 0.9,
               lineJoin: "round",
@@ -162,7 +162,7 @@ export default function MapComponent() {
           <Marker position={startPosition} icon={startIcon}>
             <Popup>
               <div className="text-center font-sans">
-                <div className="font-bold text-lg text-green-600">🏁 Départ</div>
+                <div className="font-bold text-lg" style={{ color: "#27AE60" }}>🏁 Départ</div>
                 <div className="text-gray-700 mt-1">Centre-ville d&apos;Angers</div>
                 <div className="text-sm text-gray-500 mt-1">
                   Altitude: {gpxData.points[0].ele.toFixed(0)} m
@@ -175,7 +175,7 @@ export default function MapComponent() {
           <Marker position={finishPosition} icon={finishIcon}>
             <Popup>
               <div className="text-center font-sans">
-                <div className="font-bold text-lg text-red-600">🏆 Arrivée</div>
+                <div className="font-bold text-lg" style={{ color: "#D4A574" }}>🏆 Arrivée</div>
                 <div className="text-gray-700 mt-1">Centre-ville d&apos;Angers</div>
                 <div className="text-sm text-gray-500 mt-1">
                   Altitude: {gpxData.points[gpxData.points.length - 1].ele.toFixed(0)} m
@@ -186,20 +186,20 @@ export default function MapComponent() {
         </MapContainer>
       </div>
 
-      {/* Elevation Profile */}
+      {/* Elevation Profile - Angers colors */}
       <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-lg">
         <h3 className="text-lg md:text-xl font-bold text-navy-dark mb-3 md:mb-4">Profil d&apos;élévation</h3>
         <div className="h-24 md:h-32 relative">
           <svg className="w-full h-full" viewBox="0 0 1000 100" preserveAspectRatio="none">
             <defs>
               <linearGradient id="elevationGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style={{ stopColor: "#3B82F6", stopOpacity: 0.6 }} />
-                <stop offset="100%" style={{ stopColor: "#3B82F6", stopOpacity: 0.1 }} />
+                <stop offset="0%" style={{ stopColor: "#27AE60", stopOpacity: 0.6 }} />
+                <stop offset="100%" style={{ stopColor: "#27AE60", stopOpacity: 0.1 }} />
               </linearGradient>
             </defs>
             <polyline
               fill="url(#elevationGradient)"
-              stroke="#3B82F6"
+              stroke="#27AE60"
               strokeWidth="2"
               points={gpxData.points
                 .map((p, i) => {
