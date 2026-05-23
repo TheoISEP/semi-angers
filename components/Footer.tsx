@@ -14,11 +14,12 @@ export default function Footer() {
           {/* Logo and Description */}
           <div>
             <Image
-              src="/images/logo-gray.png?v=2"
+              src="/images/logo-gray.png"
               alt="Semi-marathon d'Angers"
               width={180}
               height={180}
               className="mb-4 opacity-80"
+              unoptimized
             />
             <p className="text-gray-300 mb-4">
               La première édition du Semi-marathon d&apos;Angers aura lieu en 2027.
