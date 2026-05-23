@@ -1,0 +1,115 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+
+const distances = [
+  {
+    name: "Semi-Marathon",
+    distance: "21,1 km",
+    description: "Parcours exceptionnel dans la ville d'Angers. Découvrez les plus beaux quartiers de la ville à travers ce semi-marathon.",
+    features: [
+      "Parcours rapide au cœur d'Angers",
+      "Ravitaillements tous les 5 km",
+      "Médaille de finisher",
+    ],
+    color: "navy-dark",
+  },
+  {
+    name: "10 kilomètres",
+    distance: "10 km",
+    description: "Parcours urbain de 10 km dans le centre d'Angers. Idéal pour découvrir la ville en courant.",
+    features: [
+      "Découverte du centre-ville d'Angers",
+      "Ravitaillements à mi-parcours",
+      "Médaille de finisher",
+    ],
+    color: "blue-light",
+  },
+];
+
+export default function Parcours() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section className="py-12 md:py-20 bg-white" id="parcours">
+      <div className="container mx-auto px-4">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-8 md:mb-16"
+        >
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-navy-dark mb-4 md:mb-6">
+            Le Parcours
+          </h2>
+          <div className="w-24 md:w-32 h-1.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6 md:mb-8"></div>
+          <p className="text-lg md:text-xl lg:text-2xl text-gray-700 max-w-3xl mx-auto px-2 font-medium">
+            Un parcours exceptionnel dans la ville d&apos;Angers.
+            Choisissez votre distance et préparez-vous à vivre une expérience inoubliable.
+          </p>
+        </motion.div>
+
+        {/* GPX Trace Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-8 md:mb-16 rounded-xl md:rounded-2xl overflow-hidden shadow-2xl"
+        >
+          <img
+            src="/gpx.png"
+            alt="Tracé GPS du parcours du Semi d'Angers"
+            className="w-full h-auto"
+          />
+        </motion.div>
+
+        {/* Distances */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
+          {distances.map((distance, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+              className={`relative bg-gradient-to-br ${
+                distance.color === "navy-dark"
+                  ? "from-navy-dark to-navy-medium"
+                  : "from-seine-blue to-seine-dark"
+              } text-white rounded-xl md:rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-shadow duration-300`}
+            >
+              <div className="absolute top-3 right-3 md:top-4 md:right-4 text-4xl md:text-6xl font-bold opacity-20">
+                {distance.distance.split(" ")[0]}
+              </div>
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">{distance.name}</h3>
+              <p className="text-5xl md:text-6xl lg:text-7xl font-bold text-gradient-gold mb-3 md:mb-4" style={{ fontFamily: 'var(--font-bebas)' }}>{distance.distance}</p>
+              <p className="text-base md:text-lg mb-4 md:mb-6 opacity-90">{distance.description}</p>
+              <ul className="space-y-2">
+                {distance.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <svg
+                      className="w-6 h-6 text-gold flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
